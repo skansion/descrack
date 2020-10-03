@@ -27,8 +27,8 @@ Argomento | Descrizione | Valori ammessi
 
 Opzione | Descrizione | Valore di default | Valori ammessi
 ------- | ----------- | ----------------- | -------------
-`m` | lunghezza minima della chiave da cercare | 1 | un numero tra 1 e 8
-`M` | lunghezza massima della chiave da cercare | 8 | un numero tra 1 e 8
+`m` | lunghezza minima della chiave da cercare | 1 | un numero compreso tra 1 e 8
+`M` | lunghezza massima della chiave da cercare | 8 | un numero compreso tra 1 e 8
 `a` | alfabeto da utilizzare per limitare la ricerca | `dlus` | una stringa composta da: `d` (cifre), `l` (minuscole), `u` (maiuscole), `s` (simboli), `c` (caratteri di controllo)
 `x` | tratta `<testo-in-chiaro>` come valore esadecimale | disabilitato |
 
