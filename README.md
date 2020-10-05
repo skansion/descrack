@@ -2,7 +2,9 @@ Progetto di fine corso per "Programmazione di Sistemi Multicore", presso l'unive
 \
 `descrack` è un programma che, tramite una ricerca esaustiva, cerca la chiave di un blocco cifrato con DES.\
 Può girare su CPU (su un singolo core, oppure su più core usando OpenMP o MPI) oppure su GPU (usando CUDA).\
-Questo repository contiene anche `desencrypt`, un programma per generare un blocco cifrato con DES.
+Questo repository contiene anche:
+* `desencrypt`, un programma per generare un blocco cifrato con DES.
+* Un notebook Jupyter da utilizzare su Google Colab
 
 # Dipendenze
 * `CMake >= 3.18` per generare i makefile
