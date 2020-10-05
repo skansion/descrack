@@ -44,7 +44,7 @@ DESBlock convertTextArgument(const char *argument) {
 DESBlock convertHexArgument(const char *argument) {
     DESBlock block = {0, 0};
     char buffer[18] = {0};
-    bool isValid = true;
+    bool isValid = true, argumentEnd = false;
 
     // La grandezza della chiave è al più 64 bit (16 cifre esadecimali)
     strncpy(buffer, argument, 17);
@@ -53,7 +53,7 @@ DESBlock convertHexArgument(const char *argument) {
         // ...stampa un messaggio di errore ed esci...
         exitHexArgumentTooLong();
     // ...altrimenti controlla che ogni carattere sia una cifra esadecimale
-    for (int i = 0; i < 16 && isValid; i++)
+    for (int i = 0; i < 16 && isValid && !argumentEnd; i++)
         if (buffer[i] >= 48 && buffer[i] <= 57)
             buffer[i] -= 48;
         else
@@ -66,7 +66,7 @@ DESBlock convertHexArgument(const char *argument) {
                     // Possibile carattere non valido
                     // Se '\0' la stringa è terminata, altrimenti non è valida
                     isValid = buffer[i] == 0;
-                    break;
+                    argumentEnd = true;
                 }
     // Se la stringa non è un numero esadecimale...
     if (!isValid)

@@ -12,6 +12,6 @@ add_library(des-cuda ../libs/src/des.c)
 add_library(descrack-cuda-messages src/descrack_cuda_messages.cpp)
 
 add_executable(descrack-cuda src/descrack_cuda.cu)
-target_link_libraries(descrack-cuda descrack-cuda-messages des-cuda input-descrack CUDA::cudart)
+target_link_libraries(descrack-cuda des-cuda descrack-cuda-messages input-descrack CUDA::cudart)
 
 set_target_properties(descrack-cuda des-cuda PROPERTIES CUDA_SEPARABLE_COMPILATION ON)

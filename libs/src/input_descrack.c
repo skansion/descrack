@@ -222,6 +222,6 @@ InputDESCrack inputDESCrackInit(int argc, char **argv) {
     }
     // Se non è stato scelto un alfabeto, ne viene utilizzato uno di default
     if (input.alphabetLength == 0)
-        convertAlphabet("dlus", input.alphabet, &input.alphabetLength);
+        convertAlphabet("dlusc", input.alphabet, &input.alphabetLength);
     return input;
 }

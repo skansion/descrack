@@ -1,8 +1,8 @@
 # DESCrack
-Progetto di fine corso per "Programmazione di Sistemi Multicore", presso l'università La Sapienza, a.a. 2019-2020. \
+Progetto di fine corso per "Programmazione di Sistemi Multicore", presso l'università La Sapienza, a.a. 2019-2020.\
 \
-<em>DESCrack</em> è un programma che, tramite una ricerca esaustiva, cerca la chiave di un blocco cifrato con DES. \
-Può girare su CPU (su un singolo core, oppure su più core usando OpenMP o MPI) oppure su GPU (usando CUDA). \
+<em>DESCrack</em> è un programma che, tramite una ricerca esaustiva, cerca la chiave di un blocco cifrato con DES.\
+Può girare su CPU (su un singolo core, oppure su più core usando OpenMP o MPI) oppure su GPU (usando CUDA).\
 Questo repository contiene anche <em>DESEncrypt</em>, un programma per generare un blocco cifrato con DES.
 
 # Dipendenze
@@ -29,7 +29,7 @@ Opzione | Descrizione | Valore di default | Valori ammessi
 ------- | ----------- | ----------------- | -------------
 `m` | lunghezza minima della chiave da cercare | 1 | un numero compreso tra 1 e 8
 `M` | lunghezza massima della chiave da cercare | 8 | un numero compreso tra 1 e 8
-`a` | alfabeto da utilizzare per limitare la ricerca | `dlus` | una stringa composta da: `d` (cifre), `l` (minuscole), `u` (maiuscole), `s` (simboli), `c` (caratteri di controllo)
+`a` | alfabeto da utilizzare per limitare la ricerca | `dlusc` | una stringa composta da: `d` (cifre), `l` (minuscole), `u` (maiuscole), `s` (simboli), `c` (caratteri di controllo)
 `x` | tratta `<testo-in-chiaro>` come valore esadecimale | disabilitato |
 
 # Uso (desencrypt)
@@ -47,5 +47,5 @@ Opzione | Descrizione | Valore di default
 `s` | applica un left shift alla chiave (vedi nota in basso) | disabilitato
 
 # Note sull'opzione `s`
-DES utilizza il LSB di ogni byte della chiave come bit di parità (dispari). In caso di chiavi composte da soli caratteri ASCII (stampabili o meno), lo spazio di ricerca si riduce da 2<sup>56</sup> a 2<sup>48</sup>, per via del MSB (`0`) di ogni carattere. \
+DES utilizza il LSB di ogni byte della chiave come bit di parità (dispari). In caso di chiavi composte da soli caratteri ASCII (stampabili o meno), lo spazio di ricerca si riduce da 2<sup>56</sup> a 2<sup>48</sup>, per via del MSB (`0`) di ogni carattere.\
 L'opzione `s` applica un left shift di una posizione alla chiave, "spostando" questi bit fissi nella posizione dei bit di parità.

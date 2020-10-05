@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.18)
 
-project(PSMC LANGUAGES C CXX)
+project(PSMC)
 
 set(CMAKE_STATIC_LIBRARY_PREFIX "") 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)

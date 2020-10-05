@@ -32,7 +32,7 @@ DESBlock valueToKey(const int keyLength, const long value, const long *pows, con
             key.hi |= alphabet[(value % pows[3]) / pows[2]] << 9;
         case 2:
             key.hi |= alphabet[(value % pows[2]) / pows[1]] << 17;
-        default :
+        default:
             key.hi |= alphabet[(value % pows[1]) / pows[0]] << 25;
     }
     return key;
