@@ -77,6 +77,7 @@ __device__ static bool keyTest(const DESBlock &key) {
 __global__ static void crackKey(const int keyLength) {
     DESBlock keyTemp = {0, 0};
 
+    // Ogni kernel si occuperà di testare una chiave, cambiando solamente il primo byte
     for (int i = 0; i < alphabetLengthDevice && !keyFoundDevice; i++) {
         keyTemp = valueToKey(keyLength, i);
         if (keyTest(keyTemp)) {
@@ -87,6 +88,23 @@ __global__ static void crackKey(const int keyLength) {
 }
 
 int main(int argc, char **argv) {
+    /*
+     * Algoritmo:
+     * 
+     * Carica i valori condivisi nella memoria delle constanti sul device
+     * Per ogni valore della lunghezza della chiave e finchè la chiave non è stata trovata:
+     *   Calcola le dimensioni di blocco e griglia per l'esecuzione del kernel
+     *   Esegui sul device:
+     *     Per ogni valore del primo byte della chiave e finchè la chiave non è stata trovata:
+     *       Ottieni la chiave relativa al valore e agli identificatori
+     *       Testa la chiave
+     *   Leggi il flag "chiave trovata" dalla memoria del device
+     *   Se la chiave è stata trovata:
+     *     Leggi il valore della chiave dalla memoria del device
+     *     Forza la parità della chiave
+     *     Stampa la chiave
+     */
+
     InputDESCrack input = inputDESCrackInit(argc, argv);
     DESBlock key = {0, 0};
     bool keyFound = false;

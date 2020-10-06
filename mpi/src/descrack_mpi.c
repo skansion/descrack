@@ -10,7 +10,7 @@
 /**
  * Calcola l'intervallo di iterazione per la generazione delle chiavi.
  * 
- * @param size dimensione del
+ * @param size dimensione del communicator
  * @param rank rank del processo
  * @param pows array contenente le potenze della dimensione dell'alfabeto
  * @param keyLength lunghezza attuale della chiave da cercare
@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
      *       Per ogni valore nell'intervallo e finchè la chiave non è stata trovata:
      *         Controlla se il bcast è arrivato
      *         Se il bcast non è ancora arrivato:
-     *           Ottieni la chiave relativa al numero
+     *           Ottieni la chiave relativa al valore
      *           Testa la chiave
      *           Se la chiave è stata trovata:
      *             Manda un messaggio asincrono al processo con rank "size - 1" e aspetta la ricezione
@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
      *       Per ogni valore nell'intervallo e finchè la chiave non è stata trovata:
      *         Controlla se il messaggio è arrivato
      *         Se il messaggio non è ancora arrivato:
-     *           Ottieni la chiave relativa al numero
+     *           Ottieni la chiave relativa al valore
      *           Testa la chiave
      *           Se la chiave è stata trovata:
      *             Manda un bcast asincrono e aspetta la ricezione
@@ -69,7 +69,7 @@ int main(int argc, char **argv) {
 
     InputDESCrack input = inputDESCrackInit(argc, argv);
     DESBlock keyTemp = {0, 0};
-    int keyFoundFlag = 0, keyFoundOutsideFlag = 0, size = 0, rank = 0;
+    int keyFoundFlag = 0, isReceived = 0, size = 0, rank = 0;
     long pows[9] = {1}, lowerBound = 0, upperBound = 0;
     MPI_Request request;
 
@@ -91,9 +91,9 @@ int main(int argc, char **argv) {
             // Se la chiave non è stata ancora trovata, ripeti per ogni possibile valore...
             for (long j = lowerBound; j < upperBound && !keyFoundFlag; j++) {
                 // Testa la ricezione del bcast
-                MPI_Test(&request, &keyFoundOutsideFlag, MPI_STATUS_IGNORE);
+                MPI_Test(&request, &isReceived, MPI_STATUS_IGNORE);
                 // Se il bcast non è arrivato...
-                if (!keyFoundOutsideFlag) {
+                if (!isReceived) {
                     // Converti il valore nella chiave specifica
                     keyTemp = valueToKey(i, j, pows, input.alphabet);
                     // Testa la chiave
@@ -123,9 +123,9 @@ int main(int argc, char **argv) {
             // Se la chiave non è stata ancora trovata, ripeti per ogni possibile valore...
             for (long j = lowerBound; j < upperBound && !keyFoundFlag; j++) {
                 // Testa la ricezione del messaggio
-                MPI_Test(&request, &keyFoundOutsideFlag, MPI_STATUS_IGNORE);
+                MPI_Test(&request, &isReceived, MPI_STATUS_IGNORE);
                 // Se il messaggio non è arrivato...
-                if (!keyFoundOutsideFlag) {
+                if (!isReceived) {
                     // Converti il valore nella chiave specifica
                     keyTemp = valueToKey(i, j, pows, input.alphabet);
                     // Testa la chiave
@@ -150,7 +150,7 @@ int main(int argc, char **argv) {
     // Attendi il termine dell'iterazione degli altri processi
     MPI_Barrier(MPI_COMM_WORLD);
     // Se la chiave è stata trovata in questo processo...
-    if (keyFoundFlag && !keyFoundOutsideFlag) {
+    if (keyFoundFlag && !isReceived) {
         // ...forza la parità (dispari) e stampala
         forceOddParity(&keyTemp);
         printf("%08x%08x\n", keyTemp.hi, keyTemp.lo);

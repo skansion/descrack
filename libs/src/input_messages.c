@@ -21,7 +21,7 @@ static const char *INCOMPATIBLEFLAGSERR = "Cannot use \"-s\" and \"-X\" flags to
 
 
 /**
- * Stampa un messaggio su STDERR ed esci
+ * Stampa un messaggio su STDERR ed esci.
  * 
  * @param message messaggio da stampare
  **/
@@ -31,7 +31,7 @@ static void exitInputWithMessage(const char *message) {
 }
 
 /**
- * Stampa un messaggio specifico su STDERR ed esci
+ * Stampa un messaggio specifico su STDERR ed esci.
  * 
  * @param option opzione duplicata
  **/
@@ -45,7 +45,7 @@ void exitInvalidOption(const int option) {
 }
 
 /**
- * Stampa un messaggio specifico su STDERR ed esci
+ * Stampa un messaggio specifico su STDERR ed esci.
  * 
  * @param option opzione non valida
  **/
@@ -59,70 +59,70 @@ void exitDuplicatedOption(const int option) {
 }
 
 /**
- * Stampa un messaggio specifico su STDERR ed esci
+ * Stampa un messaggio specifico su STDERR ed esci.
  **/
 void exitTextArgumentTooLong() {
     exitInputWithMessage(LONGTEXTTYPEARGUMENTERR);
 }
 
 /**
- * Stampa un messaggio specifico su STDERR ed esci
+ * Stampa un messaggio specifico su STDERR ed esci.
  **/
 void exitHexArgumentTooLong() {
     exitInputWithMessage(LONGHEXTYPEARGUMENTERR);
 }
 
 /**
- * Stampa un messaggio specifico su STDERR ed esci
+ * Stampa un messaggio specifico su STDERR ed esci.
  **/
 void exitInvalidHexDigit() {
     exitInputWithMessage(INVALIDHEXDIGITERR);
 }
 
 /**
- * Stampa un messaggio specifico su STDERR ed esci
+ * Stampa un messaggio specifico su STDERR ed esci.
  **/
 void exitInvalidNumber() {
     exitInputWithMessage(INVALIDNUMBERERR);
 }
 
 /**
- * Stampa un messaggio specifico su STDERR ed esci
+ * Stampa un messaggio specifico su STDERR ed esci.
  **/
 void exitAlphabetArgumentTooLong() {
     exitInputWithMessage(LONGALPHABETARGUMENTERR);
 }
 
 /**
- * Stampa un messaggio specifico su STDERR ed esci
+ * Stampa un messaggio specifico su STDERR ed esci.
  **/
 void exitInvalidAlphabet() {
     exitInputWithMessage(INVALIDALPHABETERR);
 }
 
 /**
- * Stampa un messaggio specifico su STDERR ed esci
+ * Stampa un messaggio specifico su STDERR ed esci.
  **/
 void exitMinGreaterThanMax() {
     exitInputWithMessage(MINGREATERTHANMAXERR);
 }
 
 /**
- * Stampa un messaggio specifico su STDERR ed esci
+ * Stampa un messaggio specifico su STDERR ed esci.
  **/
 void exitMissingArgument() {
     exitInputWithMessage(MISSINGARGUMENTERR);
 }
 
 /**
- * Stampa un messaggio specifico su STDERR ed esci
+ * Stampa un messaggio specifico su STDERR ed esci.
  **/
 void exitTooManyArguments() {
     exitInputWithMessage(TOOMANYARGUMENTSERR);
 }
 
 /**
- * Stampa un messaggio specifico su STDERR ed esci
+ * Stampa un messaggio specifico su STDERR ed esci.
  **/
 void exitIncompatibleFlags() {
     exitInputWithMessage(INCOMPATIBLEFLAGSERR);

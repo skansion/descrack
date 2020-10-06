@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
      * Calcola tutte le potenze da 0 a 8 (compreso) della dimensione dell'alfabeto
      * Per ogni valore della lunghezza della chiave e finchè la chiave non è stata trovata:
      *   Per ogni valore possibile tra 0 e pows[lunghezza attuale chiave] e finchè la chiave non è stata trovata:
-     *     Ottieni la chiave relativa al numero
+     *     Ottieni la chiave relativa al valore
      *     Testa la chiave, settando il flag in caso positivo
      * Se la chiave è stata trovata:
      *   Forza la parità della chiave

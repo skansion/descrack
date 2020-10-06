@@ -15,7 +15,7 @@ int main(int argc, char **argv) {
      * Per ogni valore della lunghezza della chiave e finchè la chiave non è stata trovata:
      *   Svolgi in parallelo:
      *     Per ogni valore possibile tra 0 e pows[lunghezza attuale chiave]:
-     *       Ottieni la chiave relativa al numero
+     *       Ottieni la chiave relativa al valore
      *       Testa la chiave, settando flag e valore in caso positivo
      * Se la chiave è stata trovata:
      *   Forza la parità della chiave
