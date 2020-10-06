@@ -7,10 +7,11 @@ Questo repository contiene anche:
 * Un notebook Jupyter da utilizzare su Google Colab
 
 # Dipendenze
-* `CMake >= 3.18` per generare i makefile
-* `OpenMP` per compilare ed eseguire `descrack-openmp` (opzionale)
-* `OpenMPI` per compilare ed eseguire `descrack-mpi` (opzionale)
-* `CUDA Toolkit` per compilare ed eseguire `descrack-cuda` (opzionale)
+* `cmake >= 3.18` per generare i makefile
+* `pthreads` per compilare ed eseguire `descrack-threads` (opzionale)
+* `openmp` per compilare ed eseguire `descrack-openmp` (opzionale)
+* `openmpi` per compilare ed eseguire `descrack-mpi` (opzionale)
+* `cuda` per compilare ed eseguire `descrack-cuda` (opzionale)
 
 # Configurazione
 `cmake . -B build -D CMAKE_CUDA_ARCHITECTURES=<arch>` dove `<arch>` è l'architettura CUDA utilizzata

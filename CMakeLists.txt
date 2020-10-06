@@ -8,6 +8,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 add_subdirectory(libs)
 add_subdirectory(single)
 
+find_package(Threads)
+if(Threads_FOUND)
+    add_subdirectory(threads)
+endif()
+
 find_package(OpenMP)
 if(OpenMP_FOUND)
     add_subdirectory(openmp)
