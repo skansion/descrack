@@ -30,8 +30,6 @@ int main(int argc, char **argv) {
     // Calcola tutte le potenze
     for (int i = 1; i < 9; i++)
         pows[i] = pows[i - 1] * input.alphabetLength;
-    // Setta il numero di thread da utilizzare al valore massimo disponibile
-    omp_set_num_threads(omp_get_max_threads());
     // Se la chiave non è stata ancora trovata, ripeti per ogni valore della lunghezza della chiave...
     for (int i = input.minKeyLength; i <= input.maxKeyLength && !keyFound; i++) {
         // Direttiva OpenMP per eseguire il for in parallelo sui vari thread

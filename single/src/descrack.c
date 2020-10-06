@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
     bool keyFound = false;
     long pows[9] = {1};
 
-    // Calcolo tutte le potenze
+    // Calcola tutte le potenze
     for (int i = 1; i < 9; i++)
         pows[i] = pows[i - 1] * input.alphabetLength;
     // Se la chiave non è stata ancora trovata, ripeti per ogni valore della lunghezza della chiave...

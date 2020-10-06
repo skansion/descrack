@@ -77,7 +77,7 @@ int main(int argc, char **argv) {
     // Imposto size e rank del processo
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    // Calcolo tutte le potenze
+    // Calcola tutte le potenze
     for (int i = 1; i < 9; i++)
         pows[i] = pows[i - 1] * input.alphabetLength;
     // Se il processo non è "l'ultimo"...
