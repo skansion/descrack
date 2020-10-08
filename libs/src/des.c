@@ -272,7 +272,6 @@ DEVICE static void reverseKeyScheduleInit(const DESBlock *key, DESBlock *keySche
  * @return il risultato di questa funzione, come descritto nel documento FIPS 46-3
  **/
 DEVICE static DESBlock initialPermutation(const DESBlock *block64) {
-    // Value to return
     DESBlock block64Perm = {0, 0};
 
     // I bit sono raggruppati per tipo e valore dello shift
